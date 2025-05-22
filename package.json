@@ -1,0 +1,15 @@
+{
+  "name": "injection-demo",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./server.js"
+  },
+  "dependencies": {
+    "cookie-session": "*",
+    "express": "*",
+    "fs": "*",
+    "path": "*",
+    "tedious": "*"
+  }
+}

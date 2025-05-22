@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <title>SQL Injection Demo</title>
+
+    <link rel="stylesheet" href="/assets/style.css" />
+</head>
+<body>
+
+
+    <div>
+        <div class="metric-box">Total sales, <%=PrevYear%><br/>
+            <div class="metric"><%=PrevSales%></div>
+        </div>
+
+        <div class="metric-box<%=SalesTargetCss%>">Total sales, <%=Year%><br/>
+            <div class="metric"><%=Sales%></div>
+        </div>
+
+        <div class="metric-box">Sales target, <%=Year%><br/>
+            <div class="metric"><%=SalesTarget%></div>
+        </div>
+
+        <div class="metric-box">Discounts, <%=Year%><br/>
+            <div class="metric"><%=Discount%></div>
+        </div>
+    </div>
+    
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Product</th>
+            <th class="number">Quantity</th>
+            <th class="number">Unit price</th>
+        </tr>
+        <%=SalesDetails%>
+    </table>
+
+</body>
+</html>

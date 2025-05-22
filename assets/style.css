@@ -1,0 +1,70 @@
+body {
+    font-family: "Helvetica Neue", "Helvetica", "Arial";
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.metric-box {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    min-width: 220px;
+    height: 150px;
+    font-size: 10pt;
+    padding: 5px;
+    margin: 10px;
+    border-radius: 4px;
+    background-color: #e0e0e0;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+}
+
+.metric-box .metric {
+    display: block;
+    font-size: 30pt;
+}
+
+.metric-box.red {
+    background-color: #c00000;
+    color: white;
+}
+
+.metric-box.orange {
+    background-color: #c08000;
+    color: white;
+}
+
+.metric-box.green {
+    background-color: #00c000;
+    color: white;
+}
+
+table {
+    margin-top: 50px;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+table th {
+    font-weight: normal;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: black;
+    padding-right: 0;
+    text-align: left;
+}
+
+table td,
+table th {
+    padding-right: 25px;
+}
+
+table td.number,
+table th.number {
+    text-align: right;
+}
