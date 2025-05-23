@@ -294,8 +294,9 @@ CROSS APPLY (
 
 
 INSERT INTO dbo.Sales ([Timestamp], SalesAgentId, ProductId, Quantity, UnitPrice)
-SELECT DATEADD(second, 9*60*60+8*60*60*RAND(CHECKSUM(NEWID())),
-            CAST(DATEADD(day, x.ch, DATEFROMPARTS(YEAR(SYSDATETIME()), 1, 1)) AS datetime2(3))) AS [Timestamp],
+SELECT DATEADD(ms, 1000*RAND(CHECKSUM(NEWID())),
+        DATEADD(second, 9*60*60+8*60*60*RAND(CHECKSUM(NEWID())),
+                CAST(DATEADD(day, x.ch, DATEFROMPARTS(YEAR(SYSDATETIME()), 1, 1)) AS datetime2(3)))) AS [Timestamp],
        a.Id AS SalesAgentId,
        p.Id AS ProductId,
        1+FLOOR(SQRT(500*RAND(CHECKSUM(NEWID())))) AS Quantity,

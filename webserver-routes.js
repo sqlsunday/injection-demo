@@ -192,7 +192,7 @@ exports.dashboard = async function (req, res, next) {
             <td class=\"number\">"+row.UnitPrice.toFixed(2)+"</td> \
             </tr>"
         }
-
+console.log(metrics);
         httpHeaders(res);
         res.status(200).send(createHTML("assets/dashboard.html",
             {
@@ -202,7 +202,7 @@ exports.dashboard = async function (req, res, next) {
                 "PrevSales": (metrics.Sales_prev_year || 0).toFixed(2),
                 "SalesTarget": metrics.TargetAmount.toFixed(2),
                 "Discount": metrics.DiscountPercent.toFixed(2)+"%",
-                "SalesTargetCss": ((metrics.Sales || 0) >= 0.9 * metrics.SalesTarget ? "orange" : ((metrics.Sales || 0) >= metrics.SalesTarget ? " green" : " red")),
+                "SalesTargetCss": ((metrics.Sales || 0) < 0.9 * metrics.SalesTarget ? "red" : ((metrics.Sales || 0) >= metrics.TargetAmount ? " green" : " orange")),
                 "SalesDetails": salesDetailsHTML
             }
         ));
