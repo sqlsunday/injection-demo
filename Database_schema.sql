@@ -9,7 +9,13 @@ USE InjectionDemo;
 GO
 CREATE USER injectionDemo FROM LOGIN injectionDemo;
 GO
+--- Allow the web app to read and write data
 GRANT SELECT, INSERT, UPDATE, DELETE ON SCHEMA::dbo TO injectionDemo;
+--- Revert the DENY from the demo
+REVOKE SELECT ON SCHEMA::sys TO injectionDemo;
+GO
+DROP VIEW IF EXISTS dbo.SalesDashboard;
+DROP TABLE IF EXISTS dbo.Sales, dbo.SalesTargets, dbo.Products, dbo.SalesAgents;
 GO
 
 -------------------------------------------------------------------------------
@@ -304,4 +310,4 @@ CROSS APPLY (
         OFFSET x.ch ROWS FETCH NEXT 1 ROW ONLY
 ) AS p;
 
-
+GO
