@@ -44,11 +44,90 @@ body {
     color: white;
 }
 
-table {
+table, form {
     margin-top: 50px;
     margin-left: 25px;
     margin-right: 25px;
 }
+
+form.login {
+    display: inline-flex;
+    flex-wrap: wrap;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #808080;
+    padding: 25px;
+    border-radius: 20px;
+    background-color: #f8f8f8;
+    max-width: 350px;
+}
+
+form label {
+    display: inline-block;
+    width: 100px;
+    padding: 5px;
+    margin: 5px;
+    font-size: 10pt;
+}
+
+form input {
+    width: 200px;
+    padding: 5px;
+    margin: 5px;
+    font-size: 10pt;
+}
+
+form input[type="submit"] {
+    width: 150px;
+}
+
+
+
+
+
+
+form input[type="submit"] {
+    position: relative;
+    background-color: #0080e0;
+    color: white;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #ffffff #404040 #404040 #ffffff;
+    border-radius: 5px;
+    padding: 5px 15px 5px 15px;
+    margin-top: 5px;
+    margin-left: 10px;
+    outline-style: none;
+}
+
+form input[type="submit"]:after {
+    content: " ";
+    position: absolute;
+    z-index: -1;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-width: 3px;
+    border-style: solid;
+    border-color: #c0c0c0 #f8f8f8 #f8f8f8 #c0c0c0;
+    border-radius: 5px;
+}
+
+form input[type="submit"]:active {
+    border-color: #404040 #ffffff #ffffff #404040;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 table th {
     font-weight: normal;
