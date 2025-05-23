@@ -104,18 +104,22 @@ exports.doLogin = async function (req, res, next) {
     // Create the connection
     const conn=await cannedSql.connect(config);
 
-    // BAD PRACTICE: This query is not parameterized, making it vulnerable to SQL injection.
-    const query="SELECT UserName FROM dbo.SalesAgents WHERE UserName='"+req.body.username+"' AND PasswordText='"+req.body.password+"';"
+    // This query is parameterized.
+    const query="SELECT UserName FROM dbo.SalesAgents WHERE UserName=@username AND PasswordText=@password;"
     console.log(query);
 
     // Run the query
-    const queryResults=await cannedSql.query(conn, query);
+    const queryResults=await cannedSql.query(conn, query, [
+                { "name": "username", "type": cannedSql.nvarchar, "value": req.body.username },
+                { "name": "password", "type": cannedSql.nvarchar, "value": req.body.password }
+            ]);
     console.log(queryResults);
 
 
-    // BAD PRACTICE: Displaying error messages to the client can help bad actors.
+    // If there's an error message, we'll print it to the console, but not to the client.
     if (!queryResults.success) {
-        res.status(403).send(queryResults.error.message);
+        console.log(queryResults.error.message);
+        res.status(403).send();
         return;
     }
 
