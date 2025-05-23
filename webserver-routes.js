@@ -106,6 +106,7 @@ exports.doLogin = async function (req, res, next) {
 
     // BAD PRACTICE: This query is not parameterized, making it vulnerable to SQL injection.
     const query="SELECT UserName FROM dbo.SalesAgents WHERE UserName='"+req.body.username+"' AND PasswordText='"+req.body.password+"';"
+    console.log(query);
 
     // Run the query
     const queryResults=await cannedSql.query(conn, query);
